@@ -1,0 +1,1 @@
+# log_grabber.py - Placeholder for VoidScannerPro_v2.4_FINAL
