@@ -13,7 +13,7 @@ USER_AGENTS += [
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/117.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:115.0) Gecko/20100101 Firefox/115.0",
     "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:117.0) Gecko/20100101 Firefox/117.0"
-] * 20  # (x20 = 100 UA)
+] * 20
 
 # === 2. Mobile Devices UA ===
 USER_AGENTS += [
@@ -21,7 +21,7 @@ USER_AGENTS += [
     "Mozilla/5.0 (iPhone; CPU iPhone OS 16_2 like Mac OS X) AppleWebKit/605.1.15 Version/16.0 Mobile/15E148 Safari/604.1",
     "Mozilla/5.0 (Linux; Android 11; Redmi Note 10) AppleWebKit/537.36 Chrome/93.0.4577.62 Mobile Safari/537.36",
     "Mozilla/5.0 (Linux; Android 10; vivo 1915) AppleWebKit/537.36 Chrome/87.0.4280.101 Mobile Safari/537.36"
-] * 25  # (x25 = 100 UA)
+] * 25
 
 # === 3. CLI Tools & Scanners ===
 USER_AGENTS += [
@@ -35,7 +35,7 @@ USER_AGENTS += [
     "Nikto/2.1.6 (Evasions: none)",
     "Go-http-client/2.0",
     "nuclei -v 3.0.1"
-] * 10  # (x10 = 100 UA)
+] * 10
 
 # === 4. Search Engine & Bot User Agents ===
 USER_AGENTS += [
@@ -47,7 +47,7 @@ USER_AGENTS += [
     "Twitterbot/1.0",
     "Slackbot 1.0",
     "TelegramBot (like Twitterbot)"
-] * 10  # (x10 = 80 UA)
+] * 10
 
 # === 5. Fake/Obfuscated/Custom Scanner User Agents ===
 USER_AGENTS += [
@@ -56,15 +56,16 @@ USER_AGENTS += [
 
 # === === FUNCTIONS === ===
 
+def clear_screen():
+    os.system("cls" if os.name == "nt" else "clear")
+
 def get_random_agent():
-    """Return a random user-agent from the pool"""
     return random.choice(USER_AGENTS)
 
 def current_time():
     return datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 
 def save_log(content, filename="scan_log.txt"):
-    """Save logs to /logs/ folder"""
     if not os.path.exists("logs"):
         os.makedirs("logs")
     full_path = os.path.join("logs", filename)
@@ -72,44 +73,6 @@ def save_log(content, filename="scan_log.txt"):
         f.write(f"[{current_time()}] {content}\n")
 
 def export_json(data, filename="result.json"):
-    """Export dict to JSON in logs folder"""
     if not os.path.exists("logs"):
         os.makedirs("logs")
-    full_path = os.path.join("logs", filename)
-    with open(full_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=4)
-
-def format_date(dt_string):
-    """Format date to dd-mm-yyyy"""
-    try:
-        dt = datetime.datetime.strptime(dt_string, '%Y-%m-%d')
-        return dt.strftime('%d-%m-%Y')
-    except:
-        return dt_string
-
-def load_payloads(file_path):
-    """Load payloads from file"""
-    payloads = []
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith('#'):
-                    payloads.append(line)
-    return payloads
-
-def bypass_waf(payload):
-    """Very simple obfuscation"""
-    return payload.replace("'", "''").replace("=", " LIKE ").replace("<", "&lt;").replace(">", "&gt;")
-
-def print_color(text, color='green'):
-    """Print colorized output"""
-    colors = {
-        'red': '\033[91m',
-        'green': '\033[92m',
-        'yellow': '\033[93m',
-        'cyan': '\033[96m',
-        'blue': '\033[94m',
-        'end': '\033[0m'
-    }
-    print(f"{colors.get(color, '')}{text}{colors['end']}")
+    full_path = os.path.join("
