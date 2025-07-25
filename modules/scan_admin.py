@@ -1,5 +1,3 @@
-# modules/scan_admin.py
-
 import requests
 from core.utils import get_random_user_agent, save_log
 from urllib.parse import urljoin
@@ -50,3 +48,11 @@ def scan_admin_panels(target_url, timeout=5):
         save_log("admin_panels", target_url, found_admins)
     else:
         print("[ℹ️] No accessible admin panels found.")
+
+def run():
+    print("\n=== Scan Admin Panel ===")
+    target_url = input("Enter target URL (e.g. https://example.com/): ").strip()
+    if not target_url:
+        print("Target URL cannot be empty.")
+        return
+    scan_admin_panels(target_url)
