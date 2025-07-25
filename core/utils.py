@@ -8,7 +8,7 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 # Generate User-Agent acak dari list besar
-def generate_user_agent():
+def get_random_user_agent():
     user_agents = [
         # Desktop
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0",
