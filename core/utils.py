@@ -1,29 +1,51 @@
-import random
 import os
-from datetime 
+import random
+import string
 import datetime
 
-# List user-agent acak (bisa diperluas)
-USER_AGENTS = [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-    "Mozilla/5.0 (X11; Linux x86_64)",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
-    "Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X)",
-    "Mozilla/5.0 (Android 11; Mobile; rv:84.0) Gecko/84.0 Firefox/84.0",
-]
+# Bersihkan layar terminal
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
+# Generate User-Agent acak dari list besar
 def generate_user_agent():
-    return random.choice(USER_AGENTS)
+    user_agents = [
+        # Desktop
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0",
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.5993.117 Safari/537.36",
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_0) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15",
+        "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
+        "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:90.0) Gecko/20100101 Firefox/90.0",
+        # Mobile
+        "Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.92 Mobile Safari/537.36",
+        "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
+        "Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.5790.171 Mobile Safari/537.36",
+        "Mozilla/5.0 (Linux; Android 10; Redmi Note 9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.5481.154 Mobile Safari/537.36",
+        "Mozilla/5.0 (iPad; CPU OS 15_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+        # Bot & API User-Agents
+        "Googlebot/2.1 (+http://www.google.com/bot.html)",
+        "curl/7.85.0",
+        "Wget/1.21.2 (linux-gnu)",
+        "python-requests/2.31.0",
+        "Mozilla/5.0 zgrab/0.x",
+        # Headless Browsers
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) HeadlessChrome/114.0.5735.110 Safari/537.36",
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome Safari/537.36",
+        # Random uncommon
+        "Opera/9.80 (Windows NT 6.1; WOW64) Presto/2.12.388 Version/12.18",
+        "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"
+    ]
+    return random.choice(user_agents)
 
-def save_log(log_type, message):
+# Simpan log eksploitasi
+def save_log(vuln_type, data):
     log_dir = "logs"
-    os.makedirs(log_dir, exist_ok=True)
+    if not os.path.exists(log_dir):
+        os.makedirs(log_dir)
+    filename = f"{log_dir}/{vuln_type}_{datetime.datetime.now().strftime('%Y%m%d')}.txt"
+    with open(filename, "a") as f:
+        f.write(data + "\n")
 
-    now = datetime.now()
-    date_str = now.strftime("%Y-%m-%d")
-    time_str = now.strftime("%H:%M:%S")
-
-    log_path = os.path.join(log_dir, f"{log_type}_{date_str}.log")
-
-    with open(log_path, "a") as log_file:
-        log_file.write(f"[{time_str}] {message}\n")
+# Generate nama file random (opsional)
+def generate_random_filename(length=8):
+    return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
