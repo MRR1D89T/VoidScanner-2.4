@@ -41,15 +41,20 @@ def generate_user_agent():
 def get_random_user_agent():
     return generate_user_agent()
 
+# Alias agar bisa di-import langsung
+random_user_agent = get_random_user_agent
+
 # Simpan log eksploitasi
 def save_log(vuln_type, data):
     log_dir = "logs"
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
-    filename = f"{log_dir}/{vuln_type}_{datetime.datetime.now().strftime('%Y%m%d')}.txt"
+    filename = f"{log_dir}/{vuln_type}
+_{datetime.datetime.now().strftime('%Y%m%d')}.txt"
     with open(filename, "a") as f:
         f.write(data + "\n")
 
 # Generate nama file random (opsional)
 def generate_random_filename(length=8):
-    return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
+    return ''.join(random.choices(string.ascii_letters + 
+string.digits, k=length))
