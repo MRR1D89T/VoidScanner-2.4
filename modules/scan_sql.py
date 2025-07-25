@@ -1,5 +1,3 @@
-# modules/scan_sql.py
-
 import requests
 from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
 from core.utils import generate_user_agent, save_log
@@ -55,3 +53,11 @@ def scan_sql(target_url):
 
     if not found:
         print("[-] No SQLi found.")
+
+def run():
+    print("\n=== Scan SQL Injection (SQLi) ===")
+    target_url = input("Enter target URL (e.g. https://example.com?id=1): ").strip()
+    if not target_url:
+        print("Target URL cannot be empty.")
+        return
+    scan_sql(target_url)
