@@ -30,7 +30,7 @@ Version 2.4 brings massive improvements — more payloads, auto-exploit capabili
 
 ## ⚙️ Installation
 ```bash
-git clone https://github.com/MRS13xVoid/VoidScannerPro.git
+git clone https://github.com/MRR1D89T/VoidScanner-2.4.git
 cd VoidScannerPro
 pip install -r requirements.txt
 python void.py
