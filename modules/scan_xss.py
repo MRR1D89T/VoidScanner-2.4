@@ -39,3 +39,11 @@ def scan_xss(target_url):
 
     if not found:
         print("[-] No XSS found.")
+
+def run():
+    print("\n=== Scan Cross-Site Scripting (XSS) ===")
+    target_url = input("Enter target URL (e.g. https://example.com/search): ").strip()
+    if not target_url:
+        print("Target URL cannot be empty.")
+        return
+    scan_xss(target_url)
