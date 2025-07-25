@@ -1,5 +1,3 @@
-# modules/scan_headers.py
-
 import requests
 from core.utils import get_random_user_agent, save_log
 
@@ -27,7 +25,6 @@ def analyze_headers(headers):
                 findings.append(f"[❌] Missing Header: {header}")
     return findings
 
-
 def scan_headers(target_url):
     print(f"\n[🔍] Scanning HTTP Headers: {target_url}")
     headers = {'User-Agent': get_random_user_agent()}
@@ -54,3 +51,11 @@ def scan_headers(target_url):
     except requests.RequestException as e:
         print(f"[❌] Failed to connect to {target_url}")
         print(f"[Error] {e}")
+
+def run():
+    print("\n=== Scan Headers ===")
+    target_url = input("Enter target URL (e.g. https://example.com): ").strip()
+    if not target_url:
+        print("Target URL cannot be empty.")
+        return
+    scan_headers(target_url)
