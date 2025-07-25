@@ -49,8 +49,8 @@ def save_log(vuln_type, data):
     log_dir = "logs"
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
-    filename = f"{log_dir}/{vuln_type}
-_{datetime.datetime.now().strftime('%Y%m%d')}.txt"
+    date = datetime.now().strftime("%Y%m%d")
+    filename = f"{log_dir}/{vuln_type}_{date}.txt"
     with open(filename, "a") as f:
         f.write(data + "\n")
 
