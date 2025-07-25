@@ -1,14 +1,14 @@
 import os
 import random
 import string
-import datetime
+from datetime import datetime
 
 # Bersihkan layar terminal
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 # Generate User-Agent acak dari list besar
-def get_random_user_agent():
+def generate_user_agent():
     user_agents = [
         # Desktop
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0",
@@ -22,7 +22,7 @@ def get_random_user_agent():
         "Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.5790.171 Mobile Safari/537.36",
         "Mozilla/5.0 (Linux; Android 10; Redmi Note 9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.5481.154 Mobile Safari/537.36",
         "Mozilla/5.0 (iPad; CPU OS 15_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
-        # Bot & API User-Agents
+        # Bot & API
         "Googlebot/2.1 (+http://www.google.com/bot.html)",
         "curl/7.85.0",
         "Wget/1.21.2 (linux-gnu)",
@@ -31,7 +31,7 @@ def get_random_user_agent():
         # Headless Browsers
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) HeadlessChrome/114.0.5735.110 Safari/537.36",
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome Safari/537.36",
-        # Random uncommon
+        # Uncommon
         "Opera/9.80 (Windows NT 6.1; WOW64) Presto/2.12.388 Version/12.18",
         "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"
     ]
