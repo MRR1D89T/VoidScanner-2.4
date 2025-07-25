@@ -1,5 +1,3 @@
-# plugins/pelari_nuclei.py
-
 import subprocess
 import os
 import datetime
@@ -40,3 +38,13 @@ def run_nuclei_scan(target_url, template=None, severity="low,medium,high,critica
         print("[⏱️] Nuclei scan timeout reached (5 minutes).")
     except Exception as e:
         print(f"[❌] Failed to run nuclei: {str(e)}")
+
+def run_nuclei():
+    print("\n=== Nuclei Integration ===")
+    target_url = input("Enter target URL: ").strip()
+    if not target_url:
+        print("Target URL cannot be empty.")
+        return
+    template = input("Template (leave blank for default): ").strip() or None
+    severity = input("Severity (default: low,medium,high,critical): ").strip() or "low,medium,high,critical"
+    run_nuclei_scan(target_url, template, severity)
