@@ -1,7 +1,7 @@
 import os
 import random
 import string
-from datetime import datetime
+import datetime
 
 # Bersihkan layar terminal
 def clear_screen():
@@ -36,6 +36,10 @@ def generate_user_agent():
         "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"
     ]
     return random.choice(user_agents)
+
+# Alias agar kompatibel dengan modul lama
+def get_random_user_agent():
+    return generate_user_agent()
 
 # Simpan log eksploitasi
 def save_log(vuln_type, data):
