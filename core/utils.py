@@ -54,7 +54,6 @@ USER_AGENTS += [
     f"Mozilla/5.0 (compatible; ScannerVoidBot/{i}.0; +https://voidsec.net)" for i in range(1, 101)
 ]
 
-
 # === FUNCTIONS ===
 
 def clear_screen():
@@ -62,6 +61,9 @@ def clear_screen():
 
 def get_random_agent():
     return random.choice(USER_AGENTS)
+
+# Alias agar kompatibel dengan modul lain
+get_random_user_agent = get_random_agent
 
 def current_time():
     return datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
