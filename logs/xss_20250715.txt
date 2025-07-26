@@ -1,2 +1,0 @@
-[2025-07-15 15:15:27] XSS terdeteksi: http://example.com/search?q=<script>alert(1)</script>
-Payload: <script>alert(1)</script>
