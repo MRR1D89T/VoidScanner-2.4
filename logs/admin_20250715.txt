@@ -1,0 +1,2 @@
+[2025-07-15 15:16:03] Panel admin ditemukan: http://example.com/admin/login.php
+Status Code: 200
