@@ -1,0 +1,2 @@
+[2025-07-15 15:14:52] Vuln SQLi ditemukan di: http://example.com/index.php?id=1'
+Payload: ' OR '1'='1
