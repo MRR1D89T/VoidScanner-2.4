@@ -14,7 +14,7 @@ from modules import (
     filter_logs,
     log_grabber,
 )
-from plugins import pelari_nuclei
+from plugins import nuclei_runner as pelari_nuclei
 
 modules = {
     "1": ("🧠 Scan Headers", scan_headers.run),
